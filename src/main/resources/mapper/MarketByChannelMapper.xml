@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.MarketDao">
+	<select id="getMarketByChannel"
+		parameterType="com.model.Market" resultType="com.model.Market">
+		SELECT market_data_year as
+		year, market_data_country as country, market_data_industry_category_id
+		as category_id, market_data_indicator as indicator , market_data_unit
+		as unit, market_data_value as value, market_data_source FROM
+		market_insight_data_by_channel WHERE market_data_year= #{year} AND
+		market_data_country= #{country} AND market_data_industry_category_id=
+		#{category_id} AND market_data_indicator= #{indicator};
+	</select>
+</mapper>

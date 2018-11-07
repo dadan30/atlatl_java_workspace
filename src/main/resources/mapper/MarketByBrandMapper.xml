@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.MarketDao">
+	<select id="getMarketByBrand" resultType="com.model.Market">
+		SELECT
+		market_data_year, market_data_country,
+		market_data_industry_category_id, market_data_brand, market_data_company, 
+		market_data_indicator,
+		market_data_unit, market_data_value, market_data_source FROM
+		market_insight_data_by_brand WHERE 
+		market_data_country = ${market_data_country}
+		AND market_data_industry_category_id IN
+		(${market_data_industry_category_id}) AND market_data_indicator =
+		${market_data_indicator}
+	</select>
+</mapper>
